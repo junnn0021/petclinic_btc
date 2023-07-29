@@ -5,11 +5,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="owners">
+<petclinic:layout pageName="customers">
 
-    <h2>Find Owners</h2>
+    <h2>Find customer</h2>
 
-    <spring:url value="/owners" var="formUrl"/>
+    <spring:url value="/customer" var="formUrl"/>
     <form:form modelAttribute="owner" action="${fn:escapeXml(formUrl)}" method="get" class="form-horizontal"
                id="search-owner-form">
         <div class="form-group">
@@ -30,5 +30,5 @@
     </form:form>
 
     <br/>
-    <a class="btn btn-default" href='<spring:url value="/owners/new" htmlEscape="true"/>'>Add Owner</a>
+    <a class="btn btn-default" href='<spring:url value="/customer/new" htmlEscape="true"/>'>Add Owner</a>
 </petclinic:layout>

@@ -4,36 +4,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="owners">
+<petclinic:layout pageName="customers">
 
-    <h2 id="ownerInformation">Owner Information</h2>
+    <h2 id="customerInformation">customer Information</h2>
 
-    <table class="table table-striped" aria-describedby="ownerInformation">
+    <table class="table table-striped" aria-describedby="customerInformation">
         <tr>
             <th id="name">Name</th>
-            <td headers="name"><strong><c:out value="${owner.firstName} ${owner.lastName}"/></strong></td>
+            <td headers="name"><strong><c:out value="${customer.firstName} ${customer.lastName}"/></strong></td>
         </tr>
         <tr>
             <th id="address">Address</th>
-            <td headers="address"><c:out value="${owner.address}"/></td>
+            <td headers="address"><c:out value="${customer.address}"/></td>
         </tr>
         <tr>
             <th id="city">City</th>
-            <td headers="city"><c:out value="${owner.city}"/></td>
+            <td headers="city"><c:out value="${customer.city}"/></td>
         </tr>
         <tr>
             <th id="telephone">Telephone</th>
-            <td headers="telephone"><c:out value="${owner.telephone}"/></td>
+            <td headers="telephone"><c:out value="${customer.telephone}"/></td>
         </tr>
     </table>
 
-    <spring:url value="{ownerId}/edit" var="editUrl">
-        <spring:param name="ownerId" value="${owner.id}"/>
+    <spring:url value="{customerId}/edit" var="editUrl">
+        <spring:param name="customerId" value="${customer.id}"/>
     </spring:url>
-    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Edit Owner</a>
+    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Edit customer</a>
 
-    <spring:url value="{ownerId}/pets/new" var="addUrl">
-        <spring:param name="ownerId" value="${owner.id}"/>
+    <spring:url value="{customerId}/pets/new" var="addUrl">
+        <spring:param name="customerId" value="${customer.id}"/>
     </spring:url>
     <a href="${fn:escapeXml(addUrl)}" class="btn btn-default">Add New Pet</a>
 
@@ -43,7 +43,7 @@
     <h2 id="petsAndVisits">Pets and Visits</h2>
 
     <table class="table table-striped" aria-describedby="petsAndVisits">
-        <c:forEach var="pet" items="${owner.pets}">
+        <c:forEach var="pet" items="${customer.pets}">
 
             <tr>
                 <th scope="col">
@@ -72,15 +72,15 @@
                         </c:forEach>
                         <tr>
                             <td>
-                                <spring:url value="/owners/{ownerId}/pets/{petId}/edit" var="petUrl">
-                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                <spring:url value="/customers/{customerId}/pets/{petId}/edit" var="petUrl">
+                                    <spring:param name="customerId" value="${customer.id}"/>
                                     <spring:param name="petId" value="${pet.id}"/>
                                 </spring:url>
                                 <a href="${fn:escapeXml(petUrl)}">Edit Pet</a>
                             </td>
                             <td>
-                                <spring:url value="/owners/{ownerId}/pets/{petId}/visits/new" var="visitUrl">
-                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                <spring:url value="/customers/{customerId}/pets/{petId}/visits/new" var="visitUrl">
+                                    <spring:param name="customerId" value="${customer.id}"/>
                                     <spring:param name="petId" value="${pet.id}"/>
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}">Add Visit</a>
