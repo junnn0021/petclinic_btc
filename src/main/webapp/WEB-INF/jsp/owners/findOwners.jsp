@@ -9,7 +9,7 @@
 
     <h2>Find customer</h2>
 
-    <spring:url value="/customer" var="formUrl"/>
+    <spring:url value="customer" var="formUrl"/>
     <form:form modelAttribute="customer" action="${fn:escapeXml(formUrl)}" method="get" class="form-horizontal"
                id="search-customer-form">
         <div class="form-group">
@@ -30,5 +30,5 @@
     </form:form>
 
     <br/>
-    <a class="btn btn-default" href='<spring:url value="/customer/new" htmlEscape="true"/>'>Add customer</a>
+    <a class="btn btn-default" href='<spring:url value="customer/new" htmlEscape="true"/>'>Add customer</a>
 </petclinic:layout>
